@@ -1,9 +1,12 @@
 package jarkz.institutescheduler.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -19,9 +22,17 @@ public class Schedule {
   public LocalTime start;
   public LocalTime end;
   public int breakInMinutes;
+
+  @OneToOne(fetch = FetchType.LAZY, optional = false)
   public Teacher teacher;
+
+  @OneToMany(fetch = FetchType.LAZY)
   public List<Student> students;
+
+  @OneToOne(fetch = FetchType.LAZY, optional = false)
   public Room room;
+
+  @OneToOne(fetch = FetchType.LAZY, optional = false)
   public Subject subject;
 
   public static class Builder {

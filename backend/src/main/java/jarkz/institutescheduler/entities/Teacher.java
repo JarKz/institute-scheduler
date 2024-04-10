@@ -1,9 +1,11 @@
 package jarkz.institutescheduler.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Teacher {
@@ -16,7 +18,9 @@ public class Teacher {
   public String lastName;
   public String patronymic;
 
+  @OneToOne(fetch = FetchType.LAZY, optional = false)
   public Faculty faculty;
+
   public int phoneNumber;
   public String department;
 
