@@ -1,13 +1,17 @@
 let
     pkgs = import <nixpkgs> {};
-in pkgs.mkShell {
-    JAVA_HOME = pkgs.jdk17.home;
-    JAVA_LATEST_HOME = pkgs.jdk21.home;
+in with pkgs; mkShell {
+    shellHook = ''
+      zsh
+    '';
+
+    JAVA_HOME = jdk17.home;
+    JAVA_LATEST_HOME = jdk21.home;
 
     packages = [
-        pkgs.jdk17
-        pkgs.jdk21
+        jdk17
+        jdk21
 
-        pkgs.gradle
+        gradle
     ];
 }
