@@ -21,9 +21,9 @@ public class Schedule {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  public LocalDate date;
-  public LocalTime start;
-  public LocalTime end;
+  public LocalDate lessonDate;
+  public LocalTime lessonStart;
+  public LocalTime lessonEnd;
   public int breakInMinutes;
 
   @OneToOne(fetch = FetchType.LAZY, optional = false)
@@ -44,18 +44,18 @@ public class Schedule {
   public static class Builder {
     private Schedule data = new Schedule();
 
-    public Builder setDate(LocalDate date) {
-      data.date = date;
+    public Builder setLessonDate(LocalDate lessonDate) {
+      data.lessonDate = lessonDate;
       return this;
     }
 
-    public Builder setStart(LocalTime start) {
-      data.start = start;
+    public Builder setLessonStart(LocalTime lessonStart) {
+      data.lessonStart = lessonStart;
       return this;
     }
 
-    public Builder setEnd(LocalTime end) {
-      data.end = end;
+    public Builder setLessonEnd(LocalTime lessonEnd) {
+      data.lessonEnd = lessonEnd;
       return this;
     }
 
