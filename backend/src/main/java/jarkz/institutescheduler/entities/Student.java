@@ -29,7 +29,7 @@ public class Student {
   @JoinColumn(name = "speciality_id")
   public Speciality speciality;
 
-  public int phoneNumber;
+  public long phoneNumber;
   public short course;
 
   public static class Builder {
@@ -60,7 +60,7 @@ public class Student {
       return this;
     }
 
-    public Builder setPhoneNumber(int phoneNumber) {
+    public Builder setPhoneNumber(long phoneNumber) {
       data.phoneNumber = phoneNumber;
       return this;
     }

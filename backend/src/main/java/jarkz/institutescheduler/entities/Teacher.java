@@ -25,7 +25,7 @@ public class Teacher {
   @JoinColumn(name = "faculty_id")
   public Faculty faculty;
 
-  public int phoneNumber;
+  public long phoneNumber;
   public String department;
 
   public static class Builder {
@@ -51,7 +51,7 @@ public class Teacher {
       return this;
     }
 
-    public Builder setPhoneNumber(int phoneNumber) {
+    public Builder setPhoneNumber(long phoneNumber) {
       data.phoneNumber = phoneNumber;
       return this;
     }
