@@ -1,13 +1,14 @@
 package jarkz.institutescheduler.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -26,18 +27,18 @@ public class Schedule {
   public LocalTime lessonEnd;
   public int breakInMinutes;
 
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "teacher_id")
   public Teacher teacher;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "schedule")
+  @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
   public List<Student> students;
 
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "room_id")
   public Room room;
 
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "subject_id")
   public Subject subject;
 

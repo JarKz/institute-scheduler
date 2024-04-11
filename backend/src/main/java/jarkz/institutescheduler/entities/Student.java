@@ -1,12 +1,13 @@
 package jarkz.institutescheduler.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.ToString;
 
 @Entity
@@ -21,11 +22,11 @@ public class Student {
   public String lastName;
   public String patronymic;
 
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "faculty_id")
   public Faculty faculty;
 
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "speciality_id")
   public Speciality speciality;
 
