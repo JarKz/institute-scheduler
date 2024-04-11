@@ -5,6 +5,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -19,9 +20,11 @@ public class Student {
   public String patronymic;
 
   @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "faculty_id")
   public Faculty faculty;
 
   @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "speciality_id")
   public Speciality speciality;
 
   public int phoneNumber;

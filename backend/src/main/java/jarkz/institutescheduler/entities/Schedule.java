@@ -5,6 +5,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
@@ -24,15 +25,18 @@ public class Schedule {
   public int breakInMinutes;
 
   @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "teacher_id")
   public Teacher teacher;
 
-  @OneToMany(fetch = FetchType.LAZY)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "schedule")
   public List<Student> students;
 
   @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "room_id")
   public Room room;
 
   @OneToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "subject_id")
   public Subject subject;
 
   public static class Builder {
