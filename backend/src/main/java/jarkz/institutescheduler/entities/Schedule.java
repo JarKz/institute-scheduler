@@ -11,8 +11,10 @@ import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import lombok.ToString;
 
 @Entity
+@ToString
 public class Schedule {
 
   @Id
