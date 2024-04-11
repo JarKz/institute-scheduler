@@ -42,7 +42,7 @@ public class Schedule {
   public Subject subject;
 
   public static class Builder {
-    private Schedule data;
+    private Schedule data = new Schedule();
 
     public Builder setDate(LocalDate date) {
       data.date = date;

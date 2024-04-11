@@ -29,7 +29,7 @@ public class Teacher {
   public String department;
 
   public static class Builder {
-    private Teacher data;
+    private Teacher data = new Teacher();
 
     public Builder setFirstName(String firstName) {
       data.firstName = firstName;

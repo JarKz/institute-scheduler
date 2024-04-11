@@ -33,7 +33,7 @@ public class Student {
   public short course;
 
   public static class Builder {
-    private Student data;
+    private Student data = new Student();
 
     public Builder setFirstName(String firstName) {
       data.firstName = firstName;
