@@ -1,5 +1,11 @@
 package jarkz.institutescheduler.entities;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,7 +18,7 @@ import lombok.ToString;
 
 @Entity
 @ToString
-public class Student {
+public class Student extends User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -77,4 +83,9 @@ public class Student {
   }
 
   private Student() {}
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of(new SimpleGrantedAuthority("STUDENT"));
+  }
 }
