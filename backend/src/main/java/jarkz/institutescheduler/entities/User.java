@@ -5,6 +5,9 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class User implements UserDetails {
   
   public String username;
