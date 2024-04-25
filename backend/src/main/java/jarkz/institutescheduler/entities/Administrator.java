@@ -16,7 +16,7 @@ public class Administrator extends User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  public long id;
+  private long id;
 
   public Administrator() {}
 
