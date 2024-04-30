@@ -122,3 +122,7 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
+.factorypath
+.settings
+bin
+kls_database.db
