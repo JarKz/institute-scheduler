@@ -5,7 +5,7 @@ in with pkgs; mkShell {
       zsh
     '';
 
-    JAVA_HOME = jdk17.home;
+    JAVA_HOME = jdk21.home;
     JAVA_LATEST_HOME = jdk21.home;
 
     packages = [
