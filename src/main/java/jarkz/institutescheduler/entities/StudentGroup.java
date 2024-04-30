@@ -13,7 +13,7 @@ import lombok.ToString;
 
 @Entity
 @ToString
-public class Group {
+public class StudentGroup {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
