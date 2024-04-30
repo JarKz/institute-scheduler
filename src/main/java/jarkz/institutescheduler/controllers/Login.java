@@ -16,6 +16,6 @@ public class Login {
     if (errorMessage != null) {
       model.addAttribute("error_message", errorMessage);
     }
-    return "sign/login";
+    return Views.Login.getName();
   }
 }

@@ -10,6 +10,6 @@ public class Home {
 
   @GetMapping("/home")
   public String homePage() {
-    return "home";
+    return Views.Home.getName();
   }
 }
