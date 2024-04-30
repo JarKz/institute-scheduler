@@ -3,7 +3,7 @@ package jarkz.institutescheduler.models;
 import jarkz.institutescheduler.entities.Administrator;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AdiminstratorRepository extends JpaRepository<Administrator, Long> {
+public interface AdministratorRepository extends JpaRepository<Administrator, Long> {
   Administrator findByUsername(String username);
 }
 

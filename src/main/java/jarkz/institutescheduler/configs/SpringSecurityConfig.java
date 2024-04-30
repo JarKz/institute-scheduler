@@ -1,6 +1,6 @@
 package jarkz.institutescheduler.configs;
 
-import jarkz.institutescheduler.models.AdiminstratorRepository;
+import jarkz.institutescheduler.models.AdministratorRepository;
 import jarkz.institutescheduler.models.StudentRepository;
 import jarkz.institutescheduler.models.TeacherRepository;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,7 @@ public class SpringSecurityConfig {
   public UserDetailsService userDetailsService(
       StudentRepository studentRepository,
       TeacherRepository teacherRepository,
-      AdiminstratorRepository administratorRepository) {
+      AdministratorRepository administratorRepository) {
     return username -> {
       var student = studentRepository.findByUsername(username);
       if (student != null) {
