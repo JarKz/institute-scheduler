@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Login page</title>
+  <link rel="stylesheet" th:href="@{/css/login-style.css}">
+  <link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
+</head>
+
+<body>
+  <h1 class="title">Sign into Institute Scheduler</h1>
+  <form method="POST" th:action="@{/login}">
+    <input type="text" placeholder="Username" id="username" name="username" autocomplete="off">
+    <input type="password" placeholder="Password" id="password" name="password">
+    <div th:switch="${error_message}">
+      <span th:case="null" class="filler"></span>
+      <p th:case="*" th:text="'ⓘ ' + ${error_message}" class="error"></p>
+    </div>
+    <button class="ripple-effect">Sign in</button>
+</body>
+<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+<script type="text/javascript" th:src="@{/scripts/effects/form-effects.js}"></script>
+
+</html>
