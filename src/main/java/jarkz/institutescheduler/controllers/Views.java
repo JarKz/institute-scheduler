@@ -2,7 +2,12 @@ package jarkz.institutescheduler.controllers;
 
 public enum Views {
   Home("home"),
-  Login("login");
+  Login("login"),
+  Calendar("calendar"),
+  Schedule("schedule"),
+  UserInfo("user-info"),
+  UpcomingEvents("upcoming-events"),
+  ScheduleCreator("schedule-creator");
 
   private String name;
 
