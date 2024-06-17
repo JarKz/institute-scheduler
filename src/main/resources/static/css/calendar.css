@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+
+:root {
+  --background-color: #149644;
+
+  --day-element-disabled-color: rgba(255, 255, 255, 0.8);
+  --day-element-color: white;
+  --day-element-width: 150px;
+  --day-element-heigth: 135px;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  background-color: var(--background-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#calendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#calendar .week {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  gap: 15px;
+}
+
+#calendar .week .day {
+  display: flex;
+  flex-direction: column;
+
+  width: var(--day-element-width);
+  height: var(--day-element-heigth);
+
+  background-color: var(--day-element-color);
+
+  border-radius: 10px;
+}
+
+#calendar .week .disabled-day {
+  display: flex;
+  flex-direction: column;
+
+  width: var(--day-element-width);
+  height: var(--day-element-heigth);
+
+  background-color: var(--day-element-disabled-color);
+
+  border-radius: 10px;
+}
+
+#calendar .week .day .day-header,
+#calendar .week .disabled-day .day-header {
+  width: var(--day-element-width);
+  height: 25px;
+
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+#calendar .week .day .day-header,
+#calendar .week .disabled-day .day-header {
+  padding-top: 5px;
+  padding-left: 5px;
+}
