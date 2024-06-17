@@ -61,7 +61,7 @@ public class SpringSecurityConfig {
                 formLogin
                     .loginPage("/login")
                     .usernameParameter("username")
-                    .successForwardUrl("/calendar")
+                    .defaultSuccessUrl("/calendar")
                     .failureHandler(
                         (request, response, exception) -> {
                           String path = request.getContextPath();

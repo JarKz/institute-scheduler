@@ -5,11 +5,13 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class User implements UserDetails {
-  
+
+  @Column(unique = true)
   public String username;
   public String password;
 
