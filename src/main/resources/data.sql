@@ -34,3 +34,87 @@ VALUES
 INSERT INTO administrator (id, credentials_non_expired, enabled, expired, locked, username, password)
 VALUES
   (0, true, true, false, false, 'a', '$2a$10$KuJcVss/COoucN5wBGcFee9INvnLeOnZGaG3.zYy3gvQ319y7aNHS');
+
+INSERT INTO student
+  (
+    id,
+    credentials_non_expired,
+    enabled,
+    expired,
+    locked,
+    username,
+    password,
+    first_name,
+    last_name,
+    patronymic,
+    faculty_id,
+    speciality_id,
+    phone_number,
+    course
+  )
+VALUES
+  (
+    0,
+    true,
+    true,
+    false,
+    false,
+    'bialiauski',
+    '$2a$10$RHCKyVuEYhGillwpJaq9d.I.6RLvb6R2HBwjk5yRYuBfJxnKiGyQe',
+    'Pavel',
+    'Bialiauski',
+    'Aliaksandravich',
+    1,
+    1,
+    375298824134,
+    3
+  ),
+  (
+    1,
+    true,
+    true,
+    false,
+    false,
+    'amend',
+    '$2a$10$RHCKyVuEYhGillwpJaq9d.I.6RLvb6R2HBwjk5yRYuBfJxnKiGyQe',
+    'Amend',
+    'Bibal',
+    'Farent',
+    2,
+    3,
+    375298892134,
+    2
+  );
+
+INSERT INTO teacher
+  (
+    id,
+    credentials_non_expired,
+    enabled,
+    expired,
+    locked,
+    username,
+    password,
+    first_name,
+    last_name,
+    patronymic,
+    faculty_id,
+    department,
+    phone_number
+  )
+VALUES
+  (
+    0,
+    true,
+    true,
+    false,
+    false,
+    'mudar',
+    '$2a$10$RHCKyVuEYhGillwpJaq9d.I.6RLvb6R2HBwjk5yRYuBfJxnKiGyQe',
+    'Nikolay',
+    'Maikh',
+    'Alexeevich',
+    1,
+    'WEB-technology and Computer modeling',
+    375291234843
+  );
