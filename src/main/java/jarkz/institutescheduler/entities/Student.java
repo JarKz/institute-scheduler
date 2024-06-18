@@ -82,8 +82,6 @@ public class Student extends User {
     }
   }
 
-  private Student() {}
-
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return List.of(new SimpleGrantedAuthority("STUDENT"));

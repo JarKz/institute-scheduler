@@ -15,6 +15,8 @@ public class Subject {
   private long id;
   public String name;
 
+  public Subject() {}
+
   public Subject(String name) {
     this.name = name;
   }

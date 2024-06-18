@@ -17,6 +17,8 @@ public class Room {
   public int floor;
   public int number;
 
+  public Room() {}
+
   public Room(int floor, int number) {
     this.floor = floor;
     this.number = number;
