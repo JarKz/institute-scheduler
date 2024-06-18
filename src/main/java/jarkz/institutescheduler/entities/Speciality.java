@@ -15,6 +15,8 @@ public class Speciality {
   private long id;
   public String name;
 
+  public Speciality() {}
+
   public Speciality(String name) {
     this.name = name;
   }

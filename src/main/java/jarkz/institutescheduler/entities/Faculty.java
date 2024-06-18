@@ -15,6 +15,8 @@ public class Faculty {
   private Long id;
   public String name;
 
+  public Faculty() {}
+
   public Faculty(String name) {
     this.name = name;
   }
