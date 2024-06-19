@@ -9,6 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jarkz.institutescheduler.types.ShortSchedule;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -88,6 +90,10 @@ public class Schedule {
     public Schedule build() {
       return data;
     }
+  }
+
+  public ShortSchedule toShortSchedule() {
+    return new ShortSchedule(lessonDate, lessonStart, lessonEnd, subject);
   }
 
   private Schedule() {}
