@@ -118,3 +118,14 @@ VALUES
     'WEB-technology and Computer modeling',
     375291234843
   );
+
+
+INSERT INTO schedule (id, lesson_date, lesson_start, lesson_end, break_in_minutes, teacher_id, room_id, subject_id)
+VALUES
+  (0, '2024-06-10', '12:00', '15:50', 10, 0, 7, 5),
+  (1, '2024-06-25', '12:00', '15:50', 10, 0, 7, 5);
+
+INSERT INTO schedule_students (schedule_id, students_id)
+VALUES
+  (0, 0),
+  (1, 0);
