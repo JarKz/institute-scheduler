@@ -1,4 +1,47 @@
 const container = document.getElementById("calendar");
+const SCHEDULES_BY_DATE = new Map();
+
+upcoming_schedules.map(schedule => JSON.parse(schedule))
+  .forEach(schedule => {
+  let schedule_collection = SCHEDULES_BY_DATE.get(schedule["lesson_date"]);
+
+  if (schedule_collection === undefined) {
+    schedule_collection = [];
+    SCHEDULES_BY_DATE.set(schedule["lesson_date"], schedule_collection);
+  }
+
+  schedule_collection.push(schedule);
+});
+
+/**
+ * Formats the JS Date object to local date ISO format like "YYYY-mm-dd".
+ */
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  let formattedDate = year.toString() + "-";
+
+  if (month <= 9) {
+    formattedDate += "0";
+  }
+  formattedDate += month + "-";
+
+  if (day <= 9) {
+    formattedDate += "0";
+  }
+  formattedDate += day;
+  return formattedDate;
+}
+
+/**
+ * Formats the string time from "HH:mm:ss" to "HH:mm".
+ */
+function formatTime(time) {
+  // Because of the time is always in ISO time format, so this only cuts seconds.
+  return time.substring(0, 5);
+}
 
 
 /**
@@ -94,6 +137,18 @@ function createDayElement() {
 
   const ol = document.createElement("ol");
   ol.id = "event-list";
+
+  const formattedDate = formatDate(DATE);
+  if (SCHEDULES_BY_DATE.has(formattedDate)) {
+    SCHEDULES_BY_DATE.get(formattedDate)
+      .forEach(schedule => {
+        const li = document.createElement("li");
+        li.innerText = schedule["subject"] + ", " + formatTime(schedule["lesson_start"]) + "-" + formatTime(schedule["lesson_end"]);
+        li.classList.add("schedule-list");
+        ol.appendChild(li);
+      })
+  }
+
   element.appendChild(ol);
 
   return element;
