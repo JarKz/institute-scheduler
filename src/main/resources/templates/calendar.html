@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Calendar</title>
-    <link rel="stylesheet" th:href="@{/css/calendar.css}">
-  </head>
-  <body>
 
-    <div id="calendar"></div>
-    <script type="text/javascript" th:src="@{/scripts/render-calendar.js}"></script>
+<head>
+  <meta charset="UTF-8" />
+  <title>Calendar</title>
+  <link rel="stylesheet" th:href="@{/css/calendar.css}">
+  <script th:inline="javascript">
+    const upcoming_schedules = /*[[${upcoming_schedules}]]*/;
+  </script>
+</head>
 
-  </body>
+<body>
+  <div id="calendar"></div>
+  <script type="text/javascript" th:src="@{/scripts/render-calendar.js}"></script>
+</body>
+
 </html>
