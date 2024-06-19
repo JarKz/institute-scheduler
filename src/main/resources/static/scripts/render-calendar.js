@@ -3,15 +3,15 @@ const SCHEDULES_BY_DATE = new Map();
 
 upcoming_schedules.map(schedule => JSON.parse(schedule))
   .forEach(schedule => {
-  let schedule_collection = SCHEDULES_BY_DATE.get(schedule["lesson_date"]);
+    let schedule_collection = SCHEDULES_BY_DATE.get(schedule.lesson_date);
 
-  if (schedule_collection === undefined) {
-    schedule_collection = [];
-    SCHEDULES_BY_DATE.set(schedule["lesson_date"], schedule_collection);
-  }
+    if (schedule_collection === undefined) {
+      schedule_collection = [];
+      SCHEDULES_BY_DATE.set(schedule.lesson_date, schedule_collection);
+    }
 
-  schedule_collection.push(schedule);
-});
+    schedule_collection.push(schedule);
+  });
 
 /**
  * Formats the JS Date object to local date ISO format like "YYYY-mm-dd".
@@ -97,6 +97,48 @@ function incrementDate(date) {
   date.setDate(date.getDate() + 1);
 }
 
+function showWindow(_event, schedules) {
+  const blockingWindow = document.createElement("div");
+  blockingWindow.id = "blocking-window";
+
+  const window = document.createElement("div");
+  window.id = "popup-window";
+
+  const list = document.createElement("ul");
+  list.id = "schedule-list";
+
+  schedules.sort((lhs, rhs) => lhs.lesson_start.substring(0, 2).localeCompare(rhs.lesson_start.substring(0, 2)));
+  schedules.forEach(schedule => {
+    const li = document.createElement("li");
+    li.innerHTML = formatTime(schedule.lesson_start) + "-" + formatTime(schedule.lesson_end) + "|";
+    li.classList.add("schedule-element");
+
+    const span = document.createElement("span");
+    span.innerText = schedule.subject;
+    span.classList.add("schedule-subject");
+
+    li.appendChild(span);
+    list.appendChild(li);
+
+    const linebreak = document.createElement("hr");
+    linebreak.classList.add("schedule-linebreak");
+    list.appendChild(linebreak);
+  })
+
+  window.appendChild(list);
+
+  const crossSign = document.createElement("div");
+  crossSign.innerHTML = "X";
+  crossSign.classList.add("cross-sign");
+  window.appendChild(crossSign);
+
+  blockingWindow.appendChild(window);
+
+  blockingWindow.addEventListener("click", _event => blockingWindow.remove());
+  crossSign.addEventListener("click", _event => blockingWindow.remove());
+  document.body.appendChild(blockingWindow);
+}
+
 /**
  * Creates the row of the calendar named 'week'. It's neccessary because of styling.
  */
@@ -135,21 +177,16 @@ function createDayElement() {
   header.classList.add("day-header")
   element.appendChild(header);
 
-  const ol = document.createElement("ol");
-  ol.id = "event-list";
-
   const formattedDate = formatDate(DATE);
   if (SCHEDULES_BY_DATE.has(formattedDate)) {
-    SCHEDULES_BY_DATE.get(formattedDate)
-      .forEach(schedule => {
-        const li = document.createElement("li");
-        li.innerText = schedule["subject"] + ", " + formatTime(schedule["lesson_start"]) + "-" + formatTime(schedule["lesson_end"]);
-        li.classList.add("schedule-list");
-        ol.appendChild(li);
-      })
-  }
+    const schedules = SCHEDULES_BY_DATE.get(formattedDate);
+    const countSchedules = document.createElement("h3");
+    countSchedules.classList.add("count-schedules")
+    countSchedules.innerText = schedules.length.toString();
 
-  element.appendChild(ol);
+    element.appendChild(countSchedules);
+    element.addEventListener("click", event => showWindow(event, schedules));
+  }
 
   return element;
 }

@@ -7,6 +7,9 @@
   --day-element-color: white;
   --day-element-width: 150px;
   --day-element-heigth: 135px;
+
+  --popup-window-width: 720px;
+  --popup-window-height: 520px;
 }
 
 * {
@@ -44,8 +47,8 @@ body {
 }
 
 #calendar .week .day {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  position: relative;
 
   width: var(--day-element-width);
   height: var(--day-element-heigth);
@@ -56,8 +59,8 @@ body {
 }
 
 #calendar .week .disabled-day {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  position: relative;
 
   width: var(--day-element-width);
   height: var(--day-element-heigth);
@@ -72,12 +75,94 @@ body {
   width: var(--day-element-width);
   height: 25px;
 
-  padding-top: 5px;
-  padding-left: 5px;
+  padding-top: 15px;
+  padding-left: 15px;
 }
 
-#calendar .week .day .day-header,
-#calendar .week .disabled-day .day-header {
-  padding-top: 5px;
-  padding-left: 5px;
+#calendar .week .day .count-schedules,
+#calendar .week .disabled-day .count-schedules {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: var(--background-color);
+  color: white;
+}
+
+#blocking-window {
+  position: absolute;
+
+  width: 100vw;
+  height: 200vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#popup-window {
+  width: var(--popup-window-width);
+  height: var(--popup-window-height);
+
+  background-color: white;
+  border-radius: 10px;
+
+  font-weight: 500;
+  font-size: 24pt;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  position: relative;
+}
+
+#popup-window .cross-sign {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  cursor: pointer;
+}
+
+#schedule-list {
+  list-style-type: none;
+  padding: 30px;
+  margin-top: 30px;
+
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  gap: 20px;
+}
+
+li.schedule-element + li.schedule-element {
+  margin-top: 20px;
+}
+
+#schedule-list .schedule-subject {
+  border-radius: 4px;
+  margin-left: 15px;
+}
+
+#schedule-list .schedule-linebreak {
+  border-radius: 2px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+
+  width: calc(var(--popup-window-width) / 2);
+  margin: 0 auto;
 }
