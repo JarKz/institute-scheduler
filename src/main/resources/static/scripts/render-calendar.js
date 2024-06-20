@@ -142,6 +142,31 @@ function showWindow(_event, schedules) {
   document.body.appendChild(blockingWindow);
 }
 
+function createControlPanel(day_element, currentDate) {
+  const control_panel = document.createElement("div");
+  control_panel.classList.add("control-panel");
+
+  const formattedDate = formatDate(DATE);
+  if (SCHEDULES_BY_DATE.has(formattedDate)) {
+    const schedules = SCHEDULES_BY_DATE.get(formattedDate);
+    const countSchedules = document.createElement("h3");
+    countSchedules.classList.add("count-schedules")
+    countSchedules.innerText = schedules.length.toString();
+
+    control_panel.appendChild(countSchedules);
+    day_element.addEventListener("click", event => showWindow(event, schedules));
+  }
+
+  if (DATE >= currentDate) {
+    const add_schedule = document.createElement("div");
+    add_schedule.classList.add("add-schedule");
+    add_schedule.innerText = "+";
+    control_panel.appendChild(add_schedule);
+  }
+
+  return control_panel;
+}
+
 /**
  * Creates the row of the calendar named 'week'. It's neccessary because of styling.
  */
@@ -165,7 +190,8 @@ const DATE = startOfCalendar();
 function createDayElement() {
   const element = document.createElement("div");
 
-  const currentMonth = new Date().getMonth();
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth();
   if (DATE.getMonth() != currentMonth) {
     element.classList.add("disabled-day");
   } else {
@@ -180,16 +206,7 @@ function createDayElement() {
   header.classList.add("day-header")
   element.appendChild(header);
 
-  const formattedDate = formatDate(DATE);
-  if (SCHEDULES_BY_DATE.has(formattedDate)) {
-    const schedules = SCHEDULES_BY_DATE.get(formattedDate);
-    const countSchedules = document.createElement("h3");
-    countSchedules.classList.add("count-schedules")
-    countSchedules.innerText = schedules.length.toString();
-
-    element.appendChild(countSchedules);
-    element.addEventListener("click", event => showWindow(event, schedules));
-  }
+  element.appendChild(createControlPanel(element, currentDate));
 
   return element;
 }

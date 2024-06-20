@@ -79,21 +79,56 @@ body {
   padding-left: 15px;
 }
 
-#calendar .week .day .count-schedules,
-#calendar .week .disabled-day .count-schedules {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+#calendar .week .day .control-panel,
+#calendar .week .disabled-day .control-panel {
   position: absolute;
   left: 15px;
   bottom: 15px;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+#calendar .week .day .control-panel .count-schedules,
+#calendar .week .disabled-day .control-panel .count-schedules {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   width: 30px;
   height: 30px;
   border-radius: 15px;
   background-color: var(--background-color);
   color: white;
+}
+
+#calendar .week .day .control-panel .add-schedule,
+#calendar .week .disabled-day .control-panel .add-schedule {
+  visibility: hidden;
+
+  color: gray;
+
+  font-weight: 700;
+  font-size: 32pt;
+
+  cursor: pointer;
+}
+
+#calendar .week .day:hover .control-panel .add-schedule,
+#calendar .week .disabled-day:hover .control-panel .add-schedule {
+  visibility: visible;
+  animation: 0.4s linear smooth-appear;
+}
+
+@keyframes smooth-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 #blocking-window {
