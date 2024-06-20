@@ -18,18 +18,18 @@ VALUES
   (1, 'MMF'),
   (2, 'Phil');
 
-INSERT INTO room (id, floor, number)
+INSERT INTO room (id, number)
 VALUES
-  (1, 1, 102),
-  (2, 3, 338),
-  (3, 3, 340),
-  (4, 3, 332),
-  (5, 3, 344),
-  (6, 3, 345),
-  (7, 4, 402),
-  (8, 4, 405),
-  (9, 4, 408),
-  (10, 4, 410);
+  (1, 102),
+  (2, 338),
+  (3, 340),
+  (4, 332),
+  (5, 344),
+  (6, 345),
+  (7, 402),
+  (8, 405),
+  (9, 408),
+  (10, 410);
 
 INSERT INTO administrator (id, credentials_non_expired, enabled, expired, locked, username, password)
 VALUES
