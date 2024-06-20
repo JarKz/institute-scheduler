@@ -54,6 +54,8 @@ public class SpringSecurityConfig {
                 authorizeHttpRequests
                     .requestMatchers("/calendar")
                     .hasAnyAuthority("ADMINISTRATOR", "TEACHER", "STUDENT")
+                    .requestMatchers("/schedule-creator")
+                    .hasAnyAuthority("TEACHER")
                     .requestMatchers("/", "/**", "/home", "/login")
                     .permitAll())
         .formLogin(
