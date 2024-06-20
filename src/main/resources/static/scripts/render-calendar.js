@@ -142,6 +142,10 @@ function showWindow(_event, schedules) {
   document.body.appendChild(blockingWindow);
 }
 
+/**
+ * Creates the control panel of the day element which places at bottom and contains 
+ * important information and some controls like 'create new schedule at this day'.
+ */
 function createControlPanel(day_element, currentDate) {
   const control_panel = document.createElement("div");
   control_panel.classList.add("control-panel");
