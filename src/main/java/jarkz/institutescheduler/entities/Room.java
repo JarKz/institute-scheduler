@@ -1,5 +1,6 @@
 package jarkz.institutescheduler.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,13 +15,12 @@ public class Room {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  public int floor;
+  @Column(unique = true)
   public int number;
 
   public Room() {}
 
-  public Room(int floor, int number) {
-    this.floor = floor;
+  public Room(int number) {
     this.number = number;
   }
 }
