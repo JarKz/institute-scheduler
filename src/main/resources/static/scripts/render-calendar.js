@@ -97,6 +97,9 @@ function incrementDate(date) {
   date.setDate(date.getDate() + 1);
 }
 
+/**
+ * Creates pop-up window for showing the detail about schedules in particular date.
+ */
 function showWindow(_event, schedules) {
   const blockingWindow = document.createElement("div");
   blockingWindow.id = "blocking-window";
