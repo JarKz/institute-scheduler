@@ -23,4 +23,8 @@ public class StudentGroup {
 
   @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
   public List<Student> students;
+
+  public long getId() {
+    return id;
+  }
 }

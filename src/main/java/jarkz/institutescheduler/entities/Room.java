@@ -23,4 +23,8 @@ public class Room {
   public Room(int number) {
     this.number = number;
   }
+
+  public long getId() {
+    return id;
+  }
 }
