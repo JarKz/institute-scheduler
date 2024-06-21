@@ -163,7 +163,7 @@ function createControlPanel(day_element, currentDate) {
     day_element.addEventListener("click", event => showWindow(event, schedules));
   }
 
-  if (DATE >= currentDate) {
+  if (DATE >= currentDate && is_teacher) {
     const add_schedule = document.createElement("div");
     add_schedule.classList.add("add-schedule");
     add_schedule.addEventListener("click", event => {

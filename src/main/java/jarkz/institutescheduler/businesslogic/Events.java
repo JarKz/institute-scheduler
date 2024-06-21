@@ -36,4 +36,8 @@ public class Events {
 
     return List.of();
   }
+
+  public boolean isTeacher(final String username) {
+    return teacherRepository.findByUsername(username) != null;
+  }
 }

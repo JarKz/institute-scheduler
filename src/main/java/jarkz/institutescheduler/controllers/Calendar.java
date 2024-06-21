@@ -28,6 +28,7 @@ public class Calendar {
             .toList();
 
     model.addAttribute("upcoming_schedules", upcomingSchedules);
+    model.addAttribute("is_teacher", events.isTeacher(username));
 
     return Views.Calendar.getName();
   }
