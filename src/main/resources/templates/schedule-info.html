@@ -19,12 +19,17 @@
       <p id="room-number" th:text="'Room number: ' + ${schedule.room.number}"></p>
 
       <p id="break-in-minutes" th:text="'Break in minutes: ' + ${schedule.breakInMinutes}"></p>
+
+      <hr class="linebreak">
+
       <div id="teacher">
         <p class="first-name" th:text="${schedule.teacher.firstName}"></p>
         <p class="patronymic" th:text="${schedule.teacher.patronymic}"></p>
         <p class="last-name" th:text="${schedule.teacher.lastName}"></p>
         <p class="phone-number" th:text="${schedule.teacher.phoneNumber}"></p>
       </div>
+
+      <hr class="linebreak">
 
       <div id="students">
         <div th:each="student: ${schedule.students}" class="student">

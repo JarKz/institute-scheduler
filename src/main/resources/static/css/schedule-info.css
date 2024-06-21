@@ -33,18 +33,34 @@ main {
   justify-self: center;
   align-self: center;
 
-  position: relative;
   width: var(--container-width);
   min-height: var(--container-height);
   background-color: var(--container-color);
+  padding: 40px;
 
   border-radius: 15px;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
   gap: 15px;
 
   font-size: 16pt;
+
+  #teacher,
+  #students .student {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: calc(var(--container-width) - 40px * 2);
+  }
+
+  .linebreak {
+    width: calc(var(--container-width) - 40px * 2);
+    border: 3px black solid;
+    border-radius: 3px;
+  }
 }
