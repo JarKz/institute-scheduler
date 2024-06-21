@@ -164,7 +164,10 @@ function createControlPanel(day_element, currentDate) {
   if (DATE >= currentDate) {
     const add_schedule = document.createElement("div");
     add_schedule.classList.add("add-schedule");
-    add_schedule.innerText = "+";
+    add_schedule.addEventListener("click", event => {
+      window.location.href = "/schedule-creator?lesson-date=" + formatDate(currentDate);
+      event.stopPropagation();
+    });
     control_panel.appendChild(add_schedule);
   }
 

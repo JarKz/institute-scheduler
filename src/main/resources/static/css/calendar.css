@@ -107,13 +107,34 @@ body {
 #calendar .week .day .control-panel .add-schedule,
 #calendar .week .disabled-day .control-panel .add-schedule {
   visibility: hidden;
-
-  color: gray;
-
-  font-weight: 700;
-  font-size: 32pt;
-
   cursor: pointer;
+
+  position: relative;
+  width: 30px;
+  height: 30px;
+
+  &::after,
+  &::before {
+    content: "";
+    width: 6px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: gray;
+    border-radius: 20px;
+  }
+
+  &::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
 }
 
 #calendar .week .day:hover .control-panel .add-schedule,
@@ -126,6 +147,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

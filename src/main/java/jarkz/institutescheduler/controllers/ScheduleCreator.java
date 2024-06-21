@@ -25,7 +25,7 @@ public class ScheduleCreator {
 
   @GetMapping
   public String getPage(
-      @RequestParam(required = false, defaultValue = "") String lessonDate,
+      @RequestParam(required = false, name="lesson-date", defaultValue = "") String lessonDate,
       @RequestParam(required = false, defaultValue = "") String error,
       Model model) {
     if (lessonDate.isBlank()) {
