@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Schedule creator</title>
+  <!-- <link rel="stylesheet" th:href="@{/css/schedule-creator.css}"> -->
+</head>
+
+<body>
+    <form method="post" th:action="@{/schedule-creator}" id="newSchedule">
+      
+      <input type="date" name="lessonDate" id="lesson-date" th:value="${lessonDate}" required>
+      <input type="time" name="lessonStart" id="lesson-start" required>
+      <input type="time" name="lessonEnd" id="lesson-end" required>
+
+      <input type="number" value="10`" min="0" max="60" name="breakInMinutes" id="break-in-minutes" required>
+      
+      <select name="groupId" id="group-id" required>
+        <option th:each="student_group: ${student_groups}" th:value="${student_group.id}" th:text="${student_group.name}">
+      </select>
+
+      <select name="subjectId" id="subject-id" required>
+        <option th:each="subject: ${subjects}" th:value="${subject.id}" th:text="${subject.name}">
+      </select>
+
+      <select name="roomId" id="room-id" required>
+        <option th:each="room: ${rooms}" th:value="${room.id}" th:text="${room.number}">
+      </select>
+
+      <input type="submit">
+
+    </form>
+
+    <div th:if="${!error.isBlank()}" th:text="${error}"></div>
+</body>
+
+</html>
