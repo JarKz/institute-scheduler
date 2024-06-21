@@ -8,6 +8,8 @@ import java.time.format.DateTimeFormatter;
 
 public class ShortSchedule {
 
+  private long id;
+
   @SerializedName("lesson_date")
   private String lessonDate;
 
@@ -20,7 +22,8 @@ public class ShortSchedule {
   private String subject;
 
   public ShortSchedule(
-      LocalDate lessonDate, LocalTime lessonStart, LocalTime lessonEnd, Subject subject) {
+      long id, LocalDate lessonDate, LocalTime lessonStart, LocalTime lessonEnd, Subject subject) {
+    this.id = id;
     this.lessonDate = lessonDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
     this.lessonStart = lessonStart.format(DateTimeFormatter.ISO_LOCAL_TIME);
     this.lessonEnd = lessonEnd.format(DateTimeFormatter.ISO_LOCAL_TIME);

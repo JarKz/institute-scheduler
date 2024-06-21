@@ -32,7 +32,7 @@ body {
 }
 
 #calendar {
-  justify-self: center;;
+  justify-self: center;
 
   display: flex;
   justify-content: center;
@@ -198,9 +198,41 @@ body {
   flex-direction: column;
   gap: 20px;
 
-  .schedule-subject {
-    border-radius: 4px;
-    margin-left: 15px;
+  .schedule-element {
+    /* because of padding by left and right together */
+    width: calc(var(--popup-window-width) - 60px * 2);
+
+    display: grid;
+    grid-template-columns: 180px 1fr 80px;
+    grid-template-rows: 1fr;
+    gap: 10px;
+
+    .schedule-subject {
+      justify-self: start;
+      border-radius: 4px;
+    }
+
+    .schedule-info {
+      justify-self: end;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+
+      width: 80px;
+      height: 40px;
+
+      text-decoration: none;
+
+      border: 0px;
+      border-radius: 3px;
+      color: white;
+      background-color: var(--background-color);
+      cursor: pointer;
+      overflow: hidden;
+    }
   }
 
   .schedule-linebreak {
@@ -214,6 +246,6 @@ body {
   }
 }
 
-li.schedule-element + li.schedule-element {
+li.schedule-element+li.schedule-element {
   margin-top: 20px;
 }

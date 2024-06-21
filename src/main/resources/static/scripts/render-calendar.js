@@ -119,8 +119,19 @@ function showWindow(_event, schedules) {
     const span = document.createElement("span");
     span.innerText = schedule.subject;
     span.classList.add("schedule-subject");
-
     li.appendChild(span);
+
+    const scheduleInfo = document.createElement("a");
+    scheduleInfo.href = "/schedule-info?id=" + schedule.id;
+    scheduleInfo.classList.add("schedule-info");
+    scheduleInfo.innerText = "Info";
+
+    // WARNING: Make sure that the JS script of ripple effect is before of this script!
+    scheduleInfo.classList.add("ripple-effect");
+    scheduleInfo.addEventListener("click", event => ripple(event, scheduleInfo));
+
+    li.appendChild(scheduleInfo);
+
     list.appendChild(li);
 
     const linebreak = document.createElement("hr");
