@@ -35,112 +35,102 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 15px;
-}
 
-#calendar .week {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+  .week {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 
-  gap: 15px;
-}
+    gap: 15px;
 
-#calendar .week .day {
-  display: block;
-  position: relative;
+    .day,
+    .disabled-day {
+      display: block;
+      position: relative;
 
-  width: var(--day-element-width);
-  height: var(--day-element-heigth);
+      width: var(--day-element-width);
+      height: var(--day-element-heigth);
 
-  background-color: var(--day-element-color);
+      border-radius: 10px;
 
-  border-radius: 10px;
-}
+      .day-header {
+        width: var(--day-element-width);
+        height: 25px;
 
-#calendar .week .disabled-day {
-  display: block;
-  position: relative;
+        padding-top: 15px;
+        padding-left: 15px;
+      }
 
-  width: var(--day-element-width);
-  height: var(--day-element-heigth);
+      .control-panel {
+        position: absolute;
+        left: 15px;
+        bottom: 15px;
 
-  background-color: var(--day-element-disabled-color);
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 10px;
 
-  border-radius: 10px;
-}
+        .count-schedules {
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-#calendar .week .day .day-header,
-#calendar .week .disabled-day .day-header {
-  width: var(--day-element-width);
-  height: 25px;
+          width: 30px;
+          height: 30px;
+          border-radius: 15px;
+          background-color: var(--background-color);
+          color: white;
+        }
 
-  padding-top: 15px;
-  padding-left: 15px;
-}
+        .add-schedule {
+          visibility: hidden;
+          cursor: pointer;
 
-#calendar .week .day .control-panel,
-#calendar .week .disabled-day .control-panel {
-  position: absolute;
-  left: 15px;
-  bottom: 15px;
+          position: relative;
+          width: 30px;
+          height: 30px;
 
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 10px;
-}
+          &::after,
+          &::before {
+            content: "";
+            width: 6px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: gray;
+            border-radius: 20px;
+          }
 
-#calendar .week .day .control-panel .count-schedules,
-#calendar .week .disabled-day .control-panel .count-schedules {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+          &::before {
+            left: 50%;
+            transform: translateX(-50%);
+          }
 
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  background-color: var(--background-color);
-  color: white;
-}
+          &::after {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+          }
+        }
+      }
 
-#calendar .week .day .control-panel .add-schedule,
-#calendar .week .disabled-day .control-panel .add-schedule {
-  visibility: hidden;
-  cursor: pointer;
+      &:hover .control-panel .add-schedule {
+        visibility: visible;
+        animation: 0.4s linear smooth-appear;
+      }
+    }
 
-  position: relative;
-  width: 30px;
-  height: 30px;
+    .day {
+      background-color: var(--day-element-color);
+    }
 
-  &::after,
-  &::before {
-    content: "";
-    width: 6px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: gray;
-    border-radius: 20px;
+    .disabled-day {
+      background-color: var(--day-element-disabled-color);
+    }
   }
-
-  &::before {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &::after {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(90deg);
-  }
-}
-
-#calendar .week .day:hover .control-panel .add-schedule,
-#calendar .week .disabled-day:hover .control-panel .add-schedule {
-  visibility: visible;
-  animation: 0.4s linear smooth-appear;
 }
 
 @keyframes smooth-appear {
@@ -183,14 +173,14 @@ body {
   gap: 20px;
 
   position: relative;
-}
 
-#popup-window .cross-sign {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  .cross-sign {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 
-  cursor: pointer;
+    cursor: pointer;
+  }
 }
 
 #schedule-list {
@@ -203,23 +193,23 @@ body {
   align-items: start;
   flex-direction: column;
   gap: 20px;
+
+  .schedule-subject {
+    border-radius: 4px;
+    margin-left: 15px;
+  }
+
+  .schedule-linebreak {
+    border-radius: 2px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+
+    width: calc(var(--popup-window-width) / 2);
+    margin: 0 auto;
+  }
 }
 
 li.schedule-element + li.schedule-element {
   margin-top: 20px;
-}
-
-#schedule-list .schedule-subject {
-  border-radius: 4px;
-  margin-left: 15px;
-}
-
-#schedule-list .schedule-linebreak {
-  border-radius: 2px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-
-  width: calc(var(--popup-window-width) / 2);
-  margin: 0 auto;
 }
