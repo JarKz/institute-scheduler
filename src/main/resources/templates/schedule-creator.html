@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>Schedule creator</title>
+  <link rel="stylesheet" th:href="@{/css/navbar.css}">
   <link rel="stylesheet" th:href="@{/css/schedule-creator.css}">
   <link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
 </head>
 
 <body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
 
   <form method="post" th:action="@{/schedule-creator}" id="newSchedule">
 

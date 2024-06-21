@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Calendar</title>
+  <link rel="stylesheet" th:href="@{/css/navbar.css}">
   <link rel="stylesheet" th:href="@{/css/calendar.css}">
+  <link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
+
   <script th:inline="javascript">
     const upcoming_schedules = /*[[${upcoming_schedules}]]*/;
     const is_teacher = /*[[${is_teacher}]]*/;
@@ -12,8 +15,12 @@
 </head>
 
 <body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+
   <div id="calendar"></div>
   <script type="text/javascript" th:src="@{/scripts/render-calendar.js}"></script>
 </body>
+
+<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
 
 </html>

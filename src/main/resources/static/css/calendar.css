@@ -22,14 +22,18 @@
 
 body {
   background-color: var(--background-color);
+  width: 100vw;
+  height: 100vh;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 #calendar {
+  justify-self: center;;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,7 +151,7 @@ body {
   position: absolute;
 
   width: 100vw;
-  height: 200vh;
+  height: 100vh;
 
   display: flex;
   justify-content: center;

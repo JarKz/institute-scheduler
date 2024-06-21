@@ -20,22 +20,23 @@
 }
 
 body {
-  width: min(100%, 1280px);
+  width: 100vw;
   height: 100vh;
   margin: 0 auto;
 
   color: white;
-  text-shadow: 0 0 4px black;
   background-color: var(--background-color);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 30px;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
-form {
+form#newSchedule {
+  justify-self: center;
+  align-self: center;
+
   position: relative;
   width: var(--form-width);
   height: var(--form-height);

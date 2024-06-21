@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <nav id="navbar" th:fragment="navbar">
+      <div class="content-box">
+        <div class="page-links">
+          <a th:href="@{/home}" class="ripple-effect">Home</a>
+          <a th:href="@{/calendar}" class="ripple-effect">Calendar</a>
+          <a th:href="@{/schedule-creator}" sec:authorize="hasAuthority('TEACHER')" class="ripple-effect">Schedule
+            creator</a>
+        </div>
+        <div sec:authorize="isAuthenticated()" class="user">
+          <div class="username" sec:authentication="name"></div>
+          <form method="POST" th:action="@{/logout}">
+            <button class="ripple-effect">Sign out</button>
+          </form>
+        </div>
+        <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="ripple-effect">Sign
+          in</a>
+      </div>
+    </nav>
+  </body>
+</html>
