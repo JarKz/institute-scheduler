@@ -6,7 +6,6 @@
   <title>Schedule information</title>
   <link rel="stylesheet" th:href="@{/css/navbar.css}">
   <link rel="stylesheet" th:href="@{/css/schedule-info.css}">
-  <link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
 </head>
 
 <body>
@@ -14,13 +13,12 @@
 
   <main>
       <p id="lesson-date" th:text="${schedule.lessonDate}"></p>
-      <p id="lesson-start" th:text="${schedule.lessonStart}"></p>
-      <p id="lesson-end" th:text="${schedule.lessonEnd}"></p>
+      <div id="time" th:text="'Time: ' + ${schedule.lessonStart.substring(0, 5)} + '-' + ${schedule.lessonEnd.substring(0, 5)}"></div>
 
-      <p id="subject-name" th:text="${schedule.subject.name}"></p>
-      <p id="room-number" th:text="${schedule.room.number}"></p>
+      <p id="subject-name" th:text="'Subject name: ' + ${schedule.subject.name}"></p>
+      <p id="room-number" th:text="'Room number: ' + ${schedule.room.number}"></p>
 
-      <p id="break-in-minutes" th:text="${schedule.breakInMinutes}"></p>
+      <p id="break-in-minutes" th:text="'Break in minutes: ' + ${schedule.breakInMinutes}"></p>
       <div id="teacher">
         <p class="first-name" th:text="${schedule.teacher.firstName}"></p>
         <p class="patronymic" th:text="${schedule.teacher.patronymic}"></p>
@@ -39,6 +37,6 @@
   </main>
 
 </body>
-<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+<script type="text/javascript" th:src="@{/scripts/schedule-info-reformatter.js}"></script>
 
 </html>
