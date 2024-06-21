@@ -5,7 +5,7 @@
   --background-color: #149644;
 
   --form-width: 360px;
-  --form-height: 240px;
+  --form-height: 520px;
 
   --input-width: calc(var(--form-width) - 35px);
   --input-height: 40px;
@@ -48,47 +48,75 @@ form {
   align-items: center;
   flex-direction: column;
   gap: 15px;
+
+  .error {
+    width: var(--input-width);
+
+    text-shadow: none;
+
+    color: rgba(255, 0, 0, 0.9);
+    font-weight: 500;
+    font-size: 10pt;
+  }
+
+  span.filler {
+    display: block;
+    height: 30px;
+  }
+
+  input,
+  select {
+    width: var(--input-width);
+    height: var(--input-height);
+
+    font-size: 14pt;
+
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: grey;
+    background-color: transparent;
+
+    &:focus {
+      border-color: transparent;
+    }
+  }
+
+  button {
+    position: relative;
+
+    width: calc(var(--form-width) / 2);
+    height: 40px;
+
+    font-size: 14pt;
+
+    border: 0px;
+    border-radius: 3px;
+    color: white;
+    background-color: var(--background-color);
+    cursor: pointer;
+    overflow: hidden;
+  }
 }
 
-form .error {
-  text-shadow: none;
-
-  color: rgba(255, 0, 0, 0.9);
-  font-weight: 500;
-  font-size: 10pt;
-}
-
-form .filler {
-  display: block;
-  height: 30px;
-}
-
-form input {
-  width: var(--input-width);
-  height: var(--input-height);
-
-  font-size: 14pt;
-
-  outline: 0;
-  border-width: 0 0 2px;
-  border-color: grey;
-  background-color: transparent;
-}
-
-form input:focus {
-  border-color: transparent;
-}
-
-#color-outline.show-color-outline {
+#color-outline {
   position: absolute;
-  width: var(--input-width);
+
   height: var(--input-height);
 
   outline: 0;
   border-style: solid;
   border-width: 0 0 2px;
   border-color: var(--background-color);
-  animation: show-line 0.4s linear;
+
+  &.show-color-outline {
+    width: var(--input-width);
+    animation: show-line 0.4s linear;
+  }
+
+  &.erase-color-outline {
+    width: 0;
+    animation: erase-line 0.4s linear;
+  }
 }
 
 @keyframes show-line {
@@ -101,18 +129,6 @@ form input:focus {
   }
 }
 
-#color-outline.erase-color-outline {
-  position: absolute;
-  width: 0;
-  height: var(--input-height);
-
-  outline: 0;
-  border-style: solid;
-  border-width: 0 0 2px;
-  border-color: var(--background-color);
-  animation: erase-line 0.4s linear;
-}
-
 @keyframes erase-line {
   0% {
     width: var(--input-width);
@@ -121,20 +137,4 @@ form input:focus {
   100% {
     width: 0;
   }
-}
-
-form button {
-  position: relative;
-
-  width: calc(var(--form-width) / 2);
-  height: 40px;
-
-  font-size: 14pt;
-
-  border: 0px;
-  border-radius: 3px;
-  color: white;
-  background-color: var(--background-color);
-  cursor: pointer;
-  overflow: hidden;
 }

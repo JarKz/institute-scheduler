@@ -6,6 +6,7 @@ function bindEffects(inputElement) {
     effectElement.style.top = `${rectangle.top - rectangleFormPage.top}px`;
     effectElement.style.left = `${rectangle.left - rectangleFormPage.left}px`;
     event.currentTarget.parentNode.insertBefore(effectElement, event.currentTarget.nextSibling);
+    effectElement.id = "color-outline"
     effectElement.classList = ["show-color-outline"];
   }, false);
 
@@ -26,11 +27,22 @@ for (const inputElement of inputElements) {
   bindEffects(inputElement);
 }
 
+const selectElements = document.getElementsByTagName("select");
+
+for (const selectElement of selectElements) {
+  bindEffects(selectElement);
+}
+
 const errorMessage = document.getElementsByClassName("error");
 
 if (errorMessage.length !== 0) {
   const inputElementsForSetBorderColor = document.getElementsByTagName("input");
   for (const element of inputElementsForSetBorderColor) {
+    element.style.borderColor = "rgba(255, 0, 0, 0.9)";
+  }
+
+  const selectElementsForSetBorderColor = document.getElementsByTagName("select");
+  for (const element of selectElementsForSetBorderColor) {
     element.style.borderColor = "rgba(255, 0, 0, 0.9)";
   }
 }

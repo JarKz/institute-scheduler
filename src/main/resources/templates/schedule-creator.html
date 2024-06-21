@@ -4,35 +4,41 @@
 <head>
   <meta charset="UTF-8" />
   <title>Schedule creator</title>
-  <!-- <link rel="stylesheet" th:href="@{/css/schedule-creator.css}"> -->
+  <link rel="stylesheet" th:href="@{/css/schedule-creator.css}">
+  <link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
 </head>
 
 <body>
-    <form method="post" th:action="@{/schedule-creator}" id="newSchedule">
-      
-      <input type="date" name="lessonDate" id="lesson-date" th:value="${lesson_date}" required>
-      <input type="time" name="lessonStart" id="lesson-start" required>
-      <input type="time" name="lessonEnd" id="lesson-end" required>
 
-      <input type="number" value="10`" min="0" max="60" name="breakInMinutes" id="break-in-minutes" required>
-      
-      <select name="groupId" id="group-id" required>
-        <option th:each="student_group: ${student_groups}" th:value="${student_group.id}" th:text="${student_group.name}">
-      </select>
+  <form method="post" th:action="@{/schedule-creator}" id="newSchedule">
 
-      <select name="subjectId" id="subject-id" required>
-        <option th:each="subject: ${subjects}" th:value="${subject.id}" th:text="${subject.name}">
-      </select>
+    <input type="date" name="lessonDate" id="lesson-date" th:value="${lesson_date}" required>
+    <input type="time" name="lessonStart" id="lesson-start" required>
+    <input type="time" name="lessonEnd" id="lesson-end" required>
 
-      <select name="roomId" id="room-id" required>
-        <option th:each="room: ${rooms}" th:value="${room.id}" th:text="${room.number}">
-      </select>
+    <input type="number" value="10" min="0" max="60" name="breakInMinutes" id="break-in-minutes" required>
 
-      <input type="submit">
+    <select name="groupId" id="group-id" required>
+      <option th:each="student_group: ${student_groups}" th:value="${student_group.id}" th:text="${student_group.name}">
+    </select>
 
-    </form>
+    <select name="subjectId" id="subject-id" required>
+      <option th:each="subject: ${subjects}" th:value="${subject.id}" th:text="${subject.name}">
+    </select>
 
-    <div th:if="${!error.isBlank()}" th:text="${error}"></div>
+    <select name="roomId" id="room-id" required>
+      <option th:each="room: ${rooms}" th:value="${room.id}" th:text="${room.number}">
+    </select>
+
+    <p th:if="${!error.isBlank()}" th:text="'ⓘ ' + ${error}" class="error"></p>
+    <span th:if="${error.isBlank()}" class="filler"></span>
+    <button class="ripple-effect">Create</button>
+
+  </form>
+
 </body>
+
+<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+<script type="text/javascript" th:src="@{/scripts/effects/form-effects.js}"></script>
 
 </html>
