@@ -139,6 +139,8 @@ function showWindow(_event, schedules) {
 
   blockingWindow.addEventListener("click", _event => blockingWindow.remove());
   crossSign.addEventListener("click", _event => blockingWindow.remove());
+  window.addEventListener("click", event => event.stopPropagation());
+
   document.body.appendChild(blockingWindow);
 }
 
