@@ -49,6 +49,8 @@ public class SpringSecurityConfig {
                     .hasAnyAuthority("ADMINISTRATOR", "TEACHER", "STUDENT")
                     .requestMatchers("/schedule-creator")
                     .hasAnyAuthority("TEACHER")
+                    .requestMatchers("/schedule-info")
+                    .hasAnyAuthority("ADMINISTRATOR", "TEACHER", "STUDENT")
                     .requestMatchers("/", "/**", "/home", "/login")
                     .permitAll())
         .formLogin(

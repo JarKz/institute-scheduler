@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Schedule information</title>
+  <link rel="stylesheet" th:href="@{/css/navbar.css}">
+  <link rel="stylesheet" th:href="@{/css/schedule-info.css}">
+  <link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
+</head>
+
+<body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+  <main>
+      <p id="lesson-date" th:text="${schedule.lessonDate}"></p>
+      <p id="lesson-start" th:text="${schedule.lessonStart}"></p>
+      <p id="lesson-end" th:text="${schedule.lessonEnd}"></p>
+
+      <p id="subject-name" th:text="${schedule.subject.name}"></p>
+      <p id="room-number" th:text="${schedule.room.number}"></p>
+
+      <p id="break-in-minutes" th:text="${schedule.breakInMinutes}"></p>
+      <div id="teacher">
+        <p class="first-name" th:text="${schedule.teacher.firstName}"></p>
+        <p class="patronymic" th:text="${schedule.teacher.patronymic}"></p>
+        <p class="last-name" th:text="${schedule.teacher.lastName}"></p>
+        <p class="phone-number" th:text="${schedule.teacher.phoneNumber}"></p>
+      </div>
+
+      <div id="students">
+        <div th:each="student: ${schedule.students}" class="student">
+          <p class="first-name" th:text="${student.firstName}"></p>
+          <p class="patronymic" th:text="${student.patronymic}"></p>
+          <p class="last-name" th:text="${student.lastName}"></p>
+          <p class="phone-number" th:text="${student.phoneNumber}"></p>
+        </div>
+      </div>
+  </main>
+
+</body>
+<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+
+</html>

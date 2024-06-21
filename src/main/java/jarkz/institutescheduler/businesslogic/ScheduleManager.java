@@ -2,11 +2,13 @@ package jarkz.institutescheduler.businesslogic;
 
 import jarkz.institutescheduler.entities.Schedule;
 import jarkz.institutescheduler.exceptions.InvalidSchedule;
+import jarkz.institutescheduler.exceptions.ScheduleNotFound;
 import jarkz.institutescheduler.models.RoomRepository;
 import jarkz.institutescheduler.models.ScheduleRepository;
 import jarkz.institutescheduler.models.StudentGroupRepository;
 import jarkz.institutescheduler.models.SubjectRepository;
 import jarkz.institutescheduler.models.TeacherRepository;
+import jarkz.institutescheduler.types.ScheduleInfoModel;
 import jarkz.institutescheduler.types.dto.NewSchedule;
 import java.util.ArrayList;
 import org.springframework.ui.Model;
@@ -81,5 +83,12 @@ public class ScheduleManager {
             .build();
 
     scheduleRepository.saveAndFlush(schedule);
+  }
+
+  public ScheduleInfoModel getScheduleById(long id) throws ScheduleNotFound {
+    return scheduleRepository
+        .findByIdFully(id)
+        .map(ScheduleInfoModel::fromSchedule)
+        .orElseThrow(() -> new ScheduleNotFound());
   }
 }

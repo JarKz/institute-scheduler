@@ -4,7 +4,7 @@ public enum Views {
   Home("home"),
   Login("login"),
   Calendar("calendar"),
-  Schedule("schedule"),
+  Schedule("schedule-info"),
   UserInfo("user-info"),
   UpcomingEvents("upcoming-events"),
   ScheduleCreator("schedule-creator");

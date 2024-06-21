@@ -93,7 +93,7 @@ public class Schedule {
   }
 
   public ShortSchedule toShortSchedule() {
-    return new ShortSchedule(lessonDate, lessonStart, lessonEnd, subject);
+    return new ShortSchedule(id, lessonDate, lessonStart, lessonEnd, subject);
   }
 
   private Schedule() {}
