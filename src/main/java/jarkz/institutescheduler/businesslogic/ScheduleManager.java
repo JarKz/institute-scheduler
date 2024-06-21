@@ -1,6 +1,5 @@
 package jarkz.institutescheduler.businesslogic;
 
-import com.google.gson.GsonBuilder;
 import jarkz.institutescheduler.entities.Schedule;
 import jarkz.institutescheduler.exceptions.InvalidSchedule;
 import jarkz.institutescheduler.models.RoomRepository;
@@ -9,9 +8,7 @@ import jarkz.institutescheduler.models.StudentGroupRepository;
 import jarkz.institutescheduler.models.SubjectRepository;
 import jarkz.institutescheduler.models.TeacherRepository;
 import jarkz.institutescheduler.types.dto.NewSchedule;
-
 import java.util.ArrayList;
-
 import org.springframework.ui.Model;
 
 public class ScheduleManager {
@@ -69,7 +66,7 @@ public class ScheduleManager {
             .findById(newSchedule.getGroupId())
             .orElseThrow(InvalidSchedule.Reason.InvalidGroupId::raiseException);
 
-    var teacher = teacherRepository.findByUsername(teacherUsername);
+    var teacher = teacherRepository.findByUsername(teacherUsername).get();
 
     var schedule =
         new Schedule.Builder()

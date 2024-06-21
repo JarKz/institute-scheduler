@@ -1,5 +1,6 @@
 package jarkz.institutescheduler.configs;
 
+import jarkz.institutescheduler.entities.User;
 import jarkz.institutescheduler.models.AdministratorRepository;
 import jarkz.institutescheduler.models.StudentRepository;
 import jarkz.institutescheduler.models.TeacherRepository;
@@ -26,23 +27,15 @@ public class SpringSecurityConfig {
       TeacherRepository teacherRepository,
       AdministratorRepository administratorRepository) {
     return username -> {
-      var student = studentRepository.findByUsername(username);
-      if (student != null) {
-        return student;
-      }
-
-      var teacher = teacherRepository.findByUsername(username);
-      if (teacher != null) {
-        return teacher;
-      }
-
-      var administrator = administratorRepository.findByUsername(username);
-      if (administrator != null) {
-        return administrator;
-      }
-
-      throw new UsernameNotFoundException(
-          String.format("User %s is unregistered in system.", username));
+      return studentRepository
+          .findByUsername(username)
+          .map(student -> (User) student)
+          .or(() -> teacherRepository.findByUsername(username))
+          .or(() -> administratorRepository.findByUsername(username))
+          .orElseThrow(
+              () ->
+                  new UsernameNotFoundException(
+                      String.format("User %s is unregistered in system.", username)));
     };
   }
 
